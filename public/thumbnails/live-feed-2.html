@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live Feed 2</title>
+    <style>
+        body { margin: 0; background: #0a0a0a; font-family: monospace; font-size: 8px; }
+        .feed { width: 120px; height: 80px; background: #111; position: relative; border: 1px solid #444; }
+        .overlay { position: absolute; top: 2px; left: 2px; color: #00ff00; font-size: 7px; background: rgba(0,0,0,0.8); padding: 2px; }
+        .rec { position: absolute; top: 2px; right: 2px; color: #ff0000; font-size: 6px; }
+        .vault-door { position: absolute; top: 15px; left: 8px; width: 15px; height: 25px; background: #333; border: 1px solid #555; }
+        .boxes { position: absolute; top: 15px; left: 30px; }
+        .box { width: 4px; height: 3px; background: #444; border: 0.5px solid #666; margin: 1px; display: inline-block; }
+        .person { width: 3px; height: 6px; background: #4444ff; position: absolute; top: 35px; left: 25px; animation: access 3s infinite; }
+        @keyframes access { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+    <div class="feed">
+        <div class="overlay">CAM-02</div>
+        <div class="rec">● LIVE</div>
+        <div class="vault-door"></div>
+        <div class="boxes">
+            <div class="box"></div><div class="box"></div><div class="box"></div><br>
+            <div class="box"></div><div class="box"></div><div class="box"></div><br>
+            <div class="box"></div><div class="box"></div><div class="box"></div>
+        </div>
+        <div class="person"></div>
+    </div>
+</body>
+</html>

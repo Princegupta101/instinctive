@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live Feed 1</title>
+    <style>
+        body { margin: 0; background: #1a1a1a; font-family: monospace; font-size: 8px; }
+        .feed { width: 120px; height: 80px; background: #222; position: relative; border: 1px solid #444; }
+        .overlay { position: absolute; top: 2px; left: 2px; color: #00ff00; font-size: 7px; background: rgba(0,0,0,0.8); padding: 2px; }
+        .rec { position: absolute; top: 2px; right: 2px; color: #ff0000; font-size: 6px; }
+        .scene { position: absolute; bottom: 15px; left: 5px; right: 5px; height: 35px; background: #333; }
+        .machinery { width: 8px; height: 6px; background: #555; position: absolute; top: 20px; left: 15px; }
+        .machinery2 { width: 6px; height: 5px; background: #555; position: absolute; top: 22px; left: 30px; }
+        .person { width: 4px; height: 8px; background: #44aa44; position: absolute; top: 25px; left: 45px; animation: work 2s infinite; }
+        @keyframes work { 0%, 100% { left: 45px; } 50% { left: 55px; } }
+    </style>
+</head>
+<body>
+    <div class="feed">
+        <div class="overlay">CAM-01</div>
+        <div class="rec">● LIVE</div>
+        <div class="scene">
+            <div class="machinery"></div>
+            <div class="machinery2"></div>
+            <div class="person"></div>
+        </div>
+    </div>
+</body>
+</html>

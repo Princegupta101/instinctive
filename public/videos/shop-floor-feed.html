@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dummy CCTV Feed</title>
+    <style>
+        body { margin: 0; background: #1a1a1a; font-family: monospace; }
+        .feed { width: 640px; height: 360px; background: #2a2a2a; position: relative; border: 2px solid #444; }
+        .overlay { position: absolute; top: 10px; left: 10px; color: #00ff00; font-size: 14px; background: rgba(0,0,0,0.8); padding: 5px; }
+        .rec { position: absolute; top: 10px; right: 10px; color: #ff0000; font-size: 12px; }
+        .scene { position: absolute; bottom: 50px; left: 50px; right: 50px; height: 200px; background: #333; }
+        .person { width: 20px; height: 40px; background: #ff4444; position: absolute; top: 120px; left: 200px; animation: move 3s infinite; }
+        .alert { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #ff4444; color: white; padding: 10px; animation: blink 1s infinite; }
+        @keyframes move { 0%, 100% { left: 200px; } 50% { left: 400px; } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    </style>
+</head>
+<body>
+    <div class="feed">
+        <div class="overlay">CAM-01 SHOP FLOOR A<br>2025-07-22 14:23:15</div>
+        <div class="rec">● REC</div>
+        <div class="scene">
+            <div class="person"></div>
+        </div>
+        <div class="alert">UNAUTHORIZED ACCESS DETECTED</div>
+    </div>
+    <script>
+        // Auto-refresh for animation
+        setInterval(() => {
+            document.querySelector('.overlay').innerHTML = 'CAM-01 SHOP FLOOR A<br>' + new Date().toLocaleString();
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Garage Security Feed</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        .feed-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            overflow: hidden;
+        }
+        .timestamp {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #00ff00;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff00;
+            z-index: 100;
+        }
+        .camera-info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #ff6b6b;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 100;
+        }
+        .parking-lot {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 90%;
+            height: 80%;
+            background: #2a2a2a;
+            border: 2px solid #444;
+        }
+        .parking-space {
+            position: absolute;
+            border: 2px dashed #666;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .space1 { top: 20%; left: 10%; width: 15%; height: 25%; }
+        .space2 { top: 20%; left: 30%; width: 15%; height: 25%; }
+        .space3 { top: 20%; left: 50%; width: 15%; height: 25%; }
+        .space4 { top: 20%; left: 70%; width: 15%; height: 25%; }
+        .space5 { bottom: 20%; left: 10%; width: 15%; height: 25%; }
+        .space6 { bottom: 20%; left: 30%; width: 15%; height: 25%; }
+        .space7 { bottom: 20%; left: 50%; width: 15%; height: 25%; }
+        .space8 { bottom: 20%; left: 70%; width: 15%; height: 25%; }
+        
+        .car {
+            position: absolute;
+            background: linear-gradient(45deg, #4a4a4a, #6a6a6a);
+            border-radius: 8px;
+            border: 1px solid #555;
+        }
+        .car1 { top: 22%; left: 11%; width: 13%; height: 21%; }
+        .car2 { top: 22%; left: 51%; width: 13%; height: 21%; }
+        .car3 { bottom: 22%; left: 31%; width: 13%; height: 21%; }
+        
+        .moving-car {
+            position: absolute;
+            background: linear-gradient(45deg, #ff4444, #cc3333);
+            border-radius: 8px;
+            border: 1px solid #aa2222;
+            width: 12%;
+            height: 18%;
+            animation: driveAround 8s infinite linear;
+        }
+        
+        .headlights {
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: rgba(255, 255, 200, 0.8);
+            border-radius: 2px;
+            animation: headlightFlicker 3s infinite;
+        }
+        
+        .person-walking {
+            position: absolute;
+            background: #4CAF50;
+            border-radius: 50% 50% 60% 60%;
+            width: 10px;
+            height: 15px;
+            animation: walkParking 10s infinite linear;
+        }
+        
+        .security-light {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 255, 150, 0.8) 0%, rgba(255, 255, 150, 0.1) 70%);
+            border-radius: 50%;
+            animation: securitySweep 4s infinite ease-in-out;
+        }
+        
+        @keyframes driveAround {
+            0% { top: 60%; left: -15%; transform: rotate(0deg); }
+            25% { top: 55%; left: 40%; transform: rotate(10deg); }
+            50% { top: 30%; left: 90%; transform: rotate(20deg); }
+            75% { top: 35%; left: 45%; transform: rotate(-10deg); }
+            100% { top: 60%; left: -15%; transform: rotate(0deg); }
+        }
+        
+        @keyframes walkParking {
+            0% { top: 50%; left: -5%; }
+            30% { top: 40%; left: 30%; }
+            60% { top: 70%; left: 60%; }
+            100% { top: 50%; left: 105%; }
+        }
+        
+        @keyframes headlightFlicker {
+            0%, 90% { opacity: 0.8; }
+            95% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        @keyframes securitySweep {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            50% { transform: translateX(-50%) rotate(180deg); }
+        }
+        
+        .status-bar {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #00ff00;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .recording-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+        
+        .motion-alert {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            animation: alertFlash 2s infinite;
+        }
+        
+        @keyframes alertFlash {
+            0%, 50% { opacity: 1; }
+            25% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="feed-container">
+        <div class="timestamp" id="timestamp"></div>
+        <div class="camera-info">CAM-05 | PARKING</div>
+        
+        <div class="parking-lot">
+            <div class="parking-space space1"></div>
+            <div class="parking-space space2"></div>
+            <div class="parking-space space3"></div>
+            <div class="parking-space space4"></div>
+            <div class="parking-space space5"></div>
+            <div class="parking-space space6"></div>
+            <div class="parking-space space7"></div>
+            <div class="parking-space space8"></div>
+            
+            <div class="car car1"></div>
+            <div class="car car2"></div>
+            <div class="car car3"></div>
+            
+            <div class="moving-car">
+                <div class="headlights"></div>
+            </div>
+            
+            <div class="person-walking"></div>
+            <div class="security-light"></div>
+        </div>
+        
+        <div class="motion-alert">MOTION DETECTED</div>
+        
+        <div class="status-bar">
+            <div class="recording-dot"></div>
+            <span>REC</span>
+            <span>|</span>
+            <span>1080p</span>
+            <span>|</span>
+            <span>NIGHT VISION</span>
+        </div>
+    </div>
+
+    <script>
+        function updateTimestamp() {
+            const now = new Date();
+            const timestamp = now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+            document.getElementById('timestamp').textContent = timestamp;
+        }
+
+        updateTimestamp();
+        setInterval(updateTimestamp, 1000);
+    </script>
+</body>
+</html>

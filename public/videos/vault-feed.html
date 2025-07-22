@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vault CCTV Feed</title>
+    <style>
+        body { margin: 0; background: #0a0a0a; font-family: monospace; }
+        .feed { width: 640px; height: 360px; background: #1a1a1a; position: relative; border: 2px solid #444; }
+        .overlay { position: absolute; top: 10px; left: 10px; color: #00ff00; font-size: 14px; background: rgba(0,0,0,0.8); padding: 5px; }
+        .rec { position: absolute; top: 10px; right: 10px; color: #ff0000; font-size: 12px; }
+        .vault-door { position: absolute; top: 80px; left: 50px; width: 100px; height: 150px; background: #333; border: 3px solid #555; }
+        .handle { position: absolute; top: 70px; right: 10px; width: 20px; height: 20px; background: #666; border-radius: 50%; }
+        .boxes { position: absolute; top: 80px; left: 200px; }
+        .box { width: 25px; height: 15px; background: #444; border: 1px solid #666; margin: 2px; display: inline-block; }
+        .person { width: 15px; height: 30px; background: #4444ff; position: absolute; top: 180px; left: 180px; animation: scan 2s infinite; }
+        .alert { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #4444ff; color: white; padding: 10px; }
+        @keyframes scan { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+    <div class="feed">
+        <div class="overlay">CAM-02 VAULT<br>2025-07-22 14:21:45<br>SECURITY LEVEL: HIGH</div>
+        <div class="rec">● REC</div>
+        <div class="vault-door">
+            <div class="handle"></div>
+        </div>
+        <div class="boxes">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><br>
+            <div class="box"></div><div class="box" style="background: #ff8800;"></div><div class="box"></div><div class="box"></div><br>
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+        </div>
+        <div class="person"></div>
+        <div class="alert">FACE RECOGNITION: AUTHORIZED USER</div>
+    </div>
+    <script>
+        setInterval(() => {
+            document.querySelector('.overlay').innerHTML = 'CAM-02 VAULT<br>' + new Date().toLocaleString() + '<br>SECURITY LEVEL: HIGH';
+        }, 1000);
+    </script>
+</body>
+</html>

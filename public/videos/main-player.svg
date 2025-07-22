@@ -1,0 +1,8 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="360" fill="#1a1a1a"/>
+  <rect x="50" y="50" width="540" height="260" fill="#333333" stroke="#555555" stroke-width="2"/>
+  <circle cx="320" cy="180" r="40" fill="#666666"/>
+  <polygon points="300,165 300,195 340,180" fill="#999999"/>
+  <text x="320" y="250" text-anchor="middle" fill="#999999" font-family="Arial" font-size="16">INCIDENT PLAYBACK</text>
+  <text x="320" y="280" text-anchor="middle" fill="#666666" font-family="Arial" font-size="12">Click to play recorded footage</text>
+</svg>

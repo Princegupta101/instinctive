@@ -1,0 +1,36 @@
+<svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="120" height="80" fill="#0a0a0a"/>
+  
+  <!-- Camera border -->
+  <rect x="2" y="2" width="116" height="76" fill="#111" stroke="#444" stroke-width="1"/>
+  
+  <!-- Vault scene -->
+  <rect x="5" y="15" width="110" height="60" fill="#1a1a1a"/>
+  
+  <!-- Vault elements -->
+  <rect x="10" y="25" width="20" height="30" fill="#333" stroke="#555" stroke-width="0.5"/>
+  <circle cx="25" cy="40" r="4" fill="#444"/>
+  
+  <!-- Safe deposit boxes -->
+  <rect x="40" y="25" width="6" height="4" fill="#444"/>
+  <rect x="48" y="25" width="6" height="4" fill="#444"/>
+  <rect x="56" y="25" width="6" height="4" fill="#444"/>
+  <rect x="40" y="32" width="6" height="4" fill="#444"/>
+  <rect x="48" y="32" width="6" height="4" fill="#444"/>
+  <rect x="56" y="32" width="6" height="4" fill="#444"/>
+  
+  <!-- Person silhouette -->
+  <ellipse cx="30" cy="50" rx="3" ry="6" fill="#4444ff"/>
+  <ellipse cx="30" cy="58" rx="4" ry="8" fill="#4444ff"/>
+  
+  <!-- Camera info -->
+  <rect x="5" y="5" width="110" height="8" fill="#000" opacity="0.8"/>
+  <text x="7" y="11" fill="#00ff00" font-family="monospace" font-size="7">CAM-02 VAULT</text>
+  
+  <!-- Live indicator -->
+  <circle cx="105" cy="70" r="3" fill="#ff0000">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  <text x="85" y="73" fill="#ff0000" font-family="monospace" font-size="6">LIVE</text>
+</svg>

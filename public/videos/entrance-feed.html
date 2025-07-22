@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Entrance CCTV Feed</title>
+    <style>
+        body { margin: 0; background: #1a1a1a; font-family: monospace; }
+        .feed { width: 640px; height: 360px; background: #2a2a2a; position: relative; border: 2px solid #444; }
+        .overlay { position: absolute; top: 10px; left: 10px; color: #00ff00; font-size: 14px; background: rgba(0,0,0,0.8); padding: 5px; }
+        .rec { position: absolute; top: 10px; right: 10px; color: #ff0000; font-size: 12px; }
+        .door { position: absolute; top: 100px; left: 280px; width: 80px; height: 120px; background: #444; border: 2px solid #666; }
+        .keypad { position: absolute; top: 140px; left: 240px; width: 20px; height: 40px; background: #333; }
+        .walls { position: absolute; top: 100px; left: 50px; width: 200px; height: 120px; background: #2a2a2a; }
+        .walls2 { position: absolute; top: 100px; right: 50px; width: 200px; height: 120px; background: #2a2a2a; }
+        .person { width: 18px; height: 35px; background: #ff4444; position: absolute; top: 180px; left: 380px; animation: enter 4s infinite; }
+        .weapon { width: 12px; height: 6px; background: #ff8800; position: absolute; top: 190px; left: 395px; animation: enter 4s infinite; }
+        .alert { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #ff8800; color: white; padding: 10px; animation: urgent 0.5s infinite; }
+        @keyframes enter { 0% { left: 500px; } 100% { left: 380px; } }
+        @keyframes urgent { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    </style>
+</head>
+<body>
+    <div class="feed">
+        <div class="overlay">CAM-03 MAIN ENTRANCE<br>2025-07-22 14:19:32<br>THREAT LEVEL: HIGH</div>
+        <div class="rec">● REC</div>
+        <div class="walls"></div>
+        <div class="door"></div>
+        <div class="keypad"></div>
+        <div class="walls2"></div>
+        <div class="person"></div>
+        <div class="weapon"></div>
+        <div class="alert">WEAPON DETECTED - ALERT SECURITY</div>
+    </div>
+    <script>
+        setInterval(() => {
+            document.querySelector('.overlay').innerHTML = 'CAM-03 MAIN ENTRANCE<br>' + new Date().toLocaleString() + '<br>THREAT LEVEL: HIGH';
+        }, 1000);
+    </script>
+</body>
+</html>

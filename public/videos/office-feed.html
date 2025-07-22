@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Security Feed</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        .feed-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            overflow: hidden;
+        }
+        .timestamp {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #00ff00;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff00;
+            z-index: 100;
+        }
+        .camera-info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #ff6b6b;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 100;
+        }
+        .office-grid {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 80%;
+            height: 70%;
+            border: 2px solid #333;
+            background: #2a2a2a;
+        }
+        .desk {
+            position: absolute;
+            background: #8B4513;
+            border: 1px solid #654321;
+        }
+        .desk1 { top: 20%; left: 20%; width: 20%; height: 30%; }
+        .desk2 { top: 20%; right: 20%; width: 20%; height: 30%; }
+        .desk3 { bottom: 20%; left: 30%; width: 30%; height: 25%; }
+        
+        .person {
+            position: absolute;
+            background: #4CAF50;
+            border-radius: 50% 50% 60% 60%;
+            transition: all 2s ease-in-out;
+        }
+        .person1 {
+            width: 15px;
+            height: 20px;
+            top: 15%;
+            left: 25%;
+            animation: workAtDesk 4s infinite ease-in-out;
+        }
+        .person2 {
+            width: 15px;
+            height: 20px;
+            top: 70%;
+            left: 40%;
+            animation: walkOffice 6s infinite linear;
+        }
+        
+        .monitor {
+            position: absolute;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            top: 10%;
+            width: 15%;
+            height: 15%;
+        }
+        .monitor1 { left: 22%; animation: screenFlicker 3s infinite; }
+        .monitor2 { right: 22%; animation: screenFlicker 4s infinite; }
+        
+        .alert-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 0, 0.1);
+            animation: alertBlink 2s infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes workAtDesk {
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(10px) scale(0.9); }
+        }
+        
+        @keyframes walkOffice {
+            0% { left: 40%; top: 70%; }
+            25% { left: 60%; top: 60%; }
+            50% { left: 20%; top: 40%; }
+            75% { left: 70%; top: 50%; }
+            100% { left: 40%; top: 70%; }
+        }
+        
+        @keyframes screenFlicker {
+            0%, 90% { background: #1a1a1a; }
+            95% { background: #0066cc; }
+            100% { background: #1a1a1a; }
+        }
+        
+        @keyframes alertBlink {
+            0%, 50% { opacity: 0; }
+            25% { opacity: 0.3; }
+        }
+        
+        .status-bar {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #00ff00;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .recording-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+    </style>
+</head>
+<body>
+    <div class="feed-container">
+        <div class="timestamp" id="timestamp"></div>
+        <div class="camera-info">CAM-04 | OFFICE</div>
+        
+        <div class="office-grid">
+            <div class="desk desk1"></div>
+            <div class="desk desk2"></div>
+            <div class="desk desk3"></div>
+            
+            <div class="monitor monitor1"></div>
+            <div class="monitor monitor2"></div>
+            
+            <div class="person person1"></div>
+            <div class="person person2"></div>
+        </div>
+        
+        <div class="alert-overlay"></div>
+        
+        <div class="status-bar">
+            <div class="recording-dot"></div>
+            <span>REC</span>
+            <span>|</span>
+            <span>1080p</span>
+            <span>|</span>
+            <span>30fps</span>
+        </div>
+    </div>
+
+    <script>
+        function updateTimestamp() {
+            const now = new Date();
+            const timestamp = now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+            document.getElementById('timestamp').textContent = timestamp;
+        }
+
+        updateTimestamp();
+        setInterval(updateTimestamp, 1000);
+    </script>
+</body>
+</html>

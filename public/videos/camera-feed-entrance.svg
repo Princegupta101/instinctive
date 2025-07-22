@@ -1,0 +1,79 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="640" height="360" fill="#1a1a1a"/>
+  
+  <!-- Camera Feed Background -->
+  <rect x="20" y="20" width="600" height="320" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  
+  <!-- Entrance Scene -->
+  <!-- Floor -->
+  <rect x="30" y="250" width="580" height="90" fill="#3a3a3a"/>
+  
+  <!-- Entrance Door -->
+  <rect x="280" y="120" width="80" height="130" fill="#444" stroke="#666" stroke-width="2"/>
+  <rect x="285" y="125" width="70" height="120" fill="#555"/>
+  <circle cx="345" cy="185" r="3" fill="#888"/>
+  
+  <!-- Door frame -->
+  <rect x="270" y="115" width="100" height="140" fill="none" stroke="#777" stroke-width="3"/>
+  
+  <!-- Person entering with suspicious object -->
+  <ellipse cx="380" cy="200" rx="8" ry="15" fill="#ff4444"/>
+  <ellipse cx="380" cy="215" rx="12" ry="20" fill="#ff4444"/>
+  
+  <!-- Suspicious object detection -->
+  <rect x="390" y="205" width="15" height="8" fill="#ff8800" stroke="#ff4444" stroke-width="1"/>
+  
+  <!-- Motion detection box -->
+  <rect x="365" y="185" width="35" height="50" fill="none" stroke="#ff4444" stroke-width="2" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="0.8s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Object detection box -->
+  <rect x="388" y="203" width="20" height="12" fill="none" stroke="#ff8800" stroke-width="2" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.4;0.9" dur="0.6s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Security keypad -->
+  <rect x="240" y="170" width="20" height="30" fill="#333" stroke="#555" stroke-width="1"/>
+  <circle cx="250" cy="175" r="1" fill="#00ff00"/>
+  <circle cx="250" cy="180" r="1" fill="#888"/>
+  <circle cx="250" cy="185" r="1" fill="#888"/>
+  <circle cx="250" cy="190" r="1" fill="#ff0000"/>
+  
+  <!-- Side walls -->
+  <rect x="30" y="80" width="230" height="170" fill="#333"/>
+  <rect x="380" y="80" width="240" height="170" fill="#333"/>
+  
+  <!-- Ceiling -->
+  <rect x="30" y="80" width="580" height="35" fill="#2a2a2a"/>
+  
+  <!-- Camera UI Elements -->
+  <rect x="30" y="30" width="200" height="25" fill="#000" opacity="0.8"/>
+  <text x="35" y="47" fill="#00ff00" font-family="monospace" font-size="14" font-weight="bold">CAM-03 MAIN ENTRANCE</text>
+  
+  <rect x="30" y="55" width="140" height="20" fill="#000" opacity="0.8"/>
+  <text x="35" y="69" fill="#00ff00" font-family="monospace" font-size="12">2025-07-22 14:19:32</text>
+  
+  <!-- Threat level -->
+  <rect x="450" y="30" width="140" height="25" fill="#000" opacity="0.8"/>
+  <text x="455" y="47" fill="#ff8800" font-family="monospace" font-size="12" font-weight="bold">THREAT DETECTED</text>
+  
+  <!-- Recording indicator -->
+  <circle cx="580" cy="45" r="8" fill="#ff0000">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  <text x="555" y="50" fill="#ff0000" font-family="monospace" font-size="10">REC</text>
+  
+  <!-- Grid overlay -->
+  <defs>
+    <pattern id="entranceGrid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#333" stroke-width="0.3" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect x="30" y="80" width="580" height="170" fill="url(#entranceGrid)"/>
+  
+  <!-- Alert banner -->
+  <rect x="180" y="300" width="280" height="30" fill="#ff8800" opacity="0.9"/>
+  <text x="320" y="320" fill="white" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">WEAPON DETECTED - ALERT SECURITY</text>
+</svg>

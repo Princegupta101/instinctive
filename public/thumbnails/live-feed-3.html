@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live Feed 3</title>
+    <style>
+        body { margin: 0; background: #1a1a1a; font-family: monospace; font-size: 8px; }
+        .feed { width: 120px; height: 80px; background: #222; position: relative; border: 1px solid #444; }
+        .overlay { position: absolute; top: 2px; left: 2px; color: #00ff00; font-size: 7px; background: rgba(0,0,0,0.8); padding: 2px; }
+        .rec { position: absolute; top: 2px; right: 2px; color: #ff0000; font-size: 6px; }
+        .door { position: absolute; top: 20px; left: 45px; width: 12px; height: 20px; background: #444; border: 1px solid #666; }
+        .walls { position: absolute; top: 20px; left: 8px; width: 30px; height: 20px; background: #2a2a2a; }
+        .walls2 { position: absolute; top: 20px; right: 8px; width: 30px; height: 20px; background: #2a2a2a; }
+        .person { width: 3px; height: 7px; background: #44aa44; position: absolute; top: 33px; left: 65px; animation: enter 4s infinite; }
+        @keyframes enter { 0% { left: 90px; } 100% { left: 65px; } }
+    </style>
+</head>
+<body>
+    <div class="feed">
+        <div class="overlay">CAM-03</div>
+        <div class="rec">● LIVE</div>
+        <div class="walls"></div>
+        <div class="door"></div>
+        <div class="walls2"></div>
+        <div class="person"></div>
+    </div>
+</body>
+</html>
